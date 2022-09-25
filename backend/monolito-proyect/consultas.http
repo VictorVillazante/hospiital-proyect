@@ -1,0 +1,6 @@
+###Listado de reservas por paciente
+GET http://localhost:8081/pacientes/reservas/903
+
+
+###Paciente cancela consulta
+DELETE http://localhost:8081/pacientes/consulta/cancelada/17

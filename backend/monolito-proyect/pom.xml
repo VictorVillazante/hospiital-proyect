@@ -56,6 +56,24 @@
 			<artifactId>spring-rabbit-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>7.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>me.wojnowski</groupId>
+			<artifactId>googlecloud4s-firestore_2.13</artifactId>
+			<version>0.4.2</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-firestore</artifactId>
+			<version>1.35.2</version>
+		</dependency>
+ 
+		
 	</dependencies>
 
 	<build>

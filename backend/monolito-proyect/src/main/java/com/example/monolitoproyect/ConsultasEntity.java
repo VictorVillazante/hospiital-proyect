@@ -6,86 +6,101 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-@Table(name = "todo")
+@Table(name = "consultas")
 @Entity
 public class ConsultasEntity {
     @Id
     @Column
-    private Integer id;
+    private int id_consultas;
     @Column
-    private String description;
+    private int id_paciente;
     @Column
-    private Date createdAt;
+    private Date fecha;
     @Column
-    private Date updatedAt;
+    private int id_horario;
     @Column
-    private Integer status;
+    private int id_estado_consulta;
+    @Column
+    private int id_consultorio;
+    @Column
+    private int id_atencion;
+
+    public ConsultasEntity(int id_consultas, int id_paciente, Date fecha, int id_horario, int id_estado_consulta,
+            int id_consultorio, int id_atencion) {
+        this.id_consultas = id_consultas;
+        this.id_paciente = id_paciente;
+        this.fecha = fecha;
+        this.id_horario = id_horario;
+        this.id_estado_consulta = id_estado_consulta;
+        this.id_consultorio = id_consultorio;
+        this.id_atencion = id_atencion;
+    }
 
     public ConsultasEntity() {
     }
 
-    public ConsultasEntity(Integer id, String description, Date createdAt, Date updatedAt, Integer status) {
-        this.id = id;
-        this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
-    }
-    public ConsultasEntity(String description, Date createdAt, Date updatedAt, Integer status) {
-        this.description = description;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.status = status;
+    public int getId_consultas() {
+        return id_consultas;
     }
 
-    public Integer getId() {
-        return id;
+    public void setId_consultas(int id_consultas) {
+        this.id_consultas = id_consultas;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public int getId_paciente() {
+        return id_paciente;
     }
 
-    public String getDescription() {
-        return description;
+    public void setId_paciente(int id_paciente) {
+        this.id_paciente = id_paciente;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public int getId_horario() {
+        return id_horario;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public void setId_horario(int id_horario) {
+        this.id_horario = id_horario;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
+    public int getId_estado_consulta() {
+        return id_estado_consulta;
     }
 
-    public Integer getStatus() {
-        return status;
+    public void setId_estado_consulta(int id_estado_consulta) {
+        this.id_estado_consulta = id_estado_consulta;
     }
 
-    public void setStatus(Integer status) {
-        this.status = status;
+    public int getId_consultorio() {
+        return id_consultorio;
+    }
+
+    public void setId_consultorio(int id_consultorio) {
+        this.id_consultorio = id_consultorio;
+    }
+
+    public int getId_atencion() {
+        return id_atencion;
+    }
+
+    public void setId_atencion(int id_atencion) {
+        this.id_atencion = id_atencion;
     }
 
     @Override
     public String toString() {
-        return "TodoEntity{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", status=" + status +
-                '}';
+        return "ConsultasEntity [fecha=" + fecha + ", id_atencion=" + id_atencion + ", id_consultas=" + id_consultas
+                + ", id_consultorio=" + id_consultorio + ", id_estado_consulta=" + id_estado_consulta + ", id_horario="
+                + id_horario + ", id_paciente=" + id_paciente + "]";
     }
+
+   
 }
