@@ -4,3 +4,31 @@ GET http://localhost:8081/pacientes/reservas/903
 
 ###Paciente cancela consulta
 DELETE http://localhost:8081/pacientes/consulta/cancelada/17
+
+###Registrar consulta
+POST http://localhost:8081/pacientes/reservas
+Content-Type: application/json
+
+{
+    "id_consultas":null,
+    "id_paciente":1,
+    "fecha":"2022-09-26",
+    "id_horario":2,
+    "id_estado_consulta":1,
+    "id_consultorio":1,
+    "id_atencion":1
+}
+
+###Actualizar datos de consulta
+PUT http://localhost:8081/pacientes/reservas/101
+Content-Type: application/json
+
+{
+    "id_paciente":3,
+    "fecha":"2022-09-26",
+    "id_horario":2,
+    "id_estado_consulta":1,
+    "id_consultorio":1,
+    "id_atencion":1
+}
+
