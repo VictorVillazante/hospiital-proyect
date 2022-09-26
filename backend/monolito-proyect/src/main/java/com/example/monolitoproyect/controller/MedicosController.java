@@ -22,9 +22,11 @@ import com.example.monolitoproyect.dto.ConsultasFechaMedico;
 import com.example.monolitoproyect.dto.ConsultasPacienteId;
 import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.entities.EspecialidadesEntity;
+import com.example.monolitoproyect.entities.MedicosEntity;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.example.monolitoproyect.repository.RepositoryEspecialidadesJPA;
+import com.example.monolitoproyect.repository.RepositoryMedicos;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 @CrossOrigin(origins = "*")
@@ -32,7 +34,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 @RequestMapping(path = "/medicos")
 public class MedicosController {
     @Autowired
-    private RepositoryConsultas repositoryConsultas;
+    private RepositoryMedicos repositoryMedicos;
 
     @Autowired
     private RepositoryEspecialidadesJPA repositoryEspecialidadesJPA;
@@ -44,5 +46,13 @@ public class MedicosController {
         List<EspecialidadesEntity> listaEspecialidades=repositoryEspecialidadesJPA.findAll();
         
         return listaEspecialidades;
+    }
+    @GetMapping(path = "/especialidades/{id}")
+    public @ResponseBody
+    List<MedicosEntity> getMedicosPorEspecialidad(@PathVariable("id") Integer id) {
+       
+        List<MedicosEntity> listaMedicos=repositoryMedicos.listaMedicosDeEspecialidadId(id);
+        
+        return listaMedicos;
     }
 }

@@ -24,6 +24,10 @@ GET http://localhost:8081/medicos/especialidades
 ###Listado de especialidades
 GET http://localhost:8081/medicos/especialidades
 
+###Listado de medicos por especialidades
+GET http://localhost:8081/medicos/especialidades/2
+
+
 ###Actualizar datos de consulta
 PUT http://localhost:8081/pacientes/reservas/101
 Content-Type: application/json
