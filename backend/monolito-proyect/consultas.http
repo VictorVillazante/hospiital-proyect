@@ -21,9 +21,6 @@ Content-Type: application/json
 ###Listado de las especialidades existentes
 GET http://localhost:8081/medicos/especialidades
 
-###Listado de especialidades
-GET http://localhost:8081/medicos/especialidades
-
 ###Listado de medicos por especialidades
 GET http://localhost:8081/medicos/especialidades/2
 
