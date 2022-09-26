@@ -18,6 +18,11 @@ Content-Type: application/json
     "id_consultorio":1,
     "id_atencion":1
 }
+###Listado de las especialidades existentes
+GET http://localhost:8081/medicos/especialidades
+
+###Listado de especialidades
+GET http://localhost:8081/medicos/especialidades
 
 ###Actualizar datos de consulta
 PUT http://localhost:8081/pacientes/reservas/101
@@ -34,3 +39,4 @@ Content-Type: application/json
 
 ### Multiples parametros
 GET http://localhost:8081/pacientes/consultas-dia?id_medico=3&fecha=2022-09-25
+

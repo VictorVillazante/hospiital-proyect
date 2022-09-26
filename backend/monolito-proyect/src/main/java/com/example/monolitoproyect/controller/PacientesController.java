@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.monolitoproyect.ConsultasEntity;
 import com.example.monolitoproyect.dto.ConsultasFechaMedico;
 import com.example.monolitoproyect.dto.ConsultasPacienteId;
+import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;

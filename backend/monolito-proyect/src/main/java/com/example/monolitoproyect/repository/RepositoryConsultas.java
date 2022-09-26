@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.example.monolitoproyect.ConsultasEntity;
+import com.example.monolitoproyect.entities.ConsultasEntity;
 
 public interface RepositoryConsultas extends PagingAndSortingRepository<ConsultasEntity,Integer>{
     @Query(value="SELECT c.id_consultas,e.nombre as especialidad,m.nombre as medico,p.nombre as paciente,h.inicio,h.fin,c.fecha,ec.nombre as estado,con.nombre as consultorio "+

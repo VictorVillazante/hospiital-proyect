@@ -1,4 +1,4 @@
-package com.example.monolitoproyect;
+package com.example.monolitoproyect.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
