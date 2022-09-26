@@ -32,3 +32,5 @@ Content-Type: application/json
     "id_atencion":1
 }
 
+### Multiples parametros
+GET http://localhost:8081/pacientes/consultas-dia?id_medico=3&fecha=2022-09-25

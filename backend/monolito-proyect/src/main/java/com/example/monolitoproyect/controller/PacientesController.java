@@ -2,6 +2,7 @@ package com.example.monolitoproyect.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.jline.utils.Log;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.monolitoproyect.ConsultasEntity;
+import com.example.monolitoproyect.dto.ConsultasFechaMedico;
 import com.example.monolitoproyect.dto.ConsultasPacienteId;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
@@ -91,4 +94,22 @@ public class PacientesController {
         
         return repositoryConsultasJPA.save(cn);
     }
+
+
+    @GetMapping(value = "/consultas-dia")
+    public @ResponseBody List<ConsultasFechaMedico> controllerMethod(@RequestParam Map<String, String> customQuery) {
+
+        System.out.println("Medico" + customQuery.get("id_medico"));
+        System.out.println("Fecha" + customQuery.get("fecha"));
+
+        ArrayList<ConsultasFechaMedico> listaConsultas=new ArrayList();
+        List<Object>lista= repositoryConsultas.listarConsultasMedicoFecha(customQuery.get("id_medico"),customQuery.get("fecha"));
+        for(int i=0;i<lista.size();i++){
+            Object[] l=(Object[]) lista.get(i);
+            ConsultasFechaMedico cpid=new ConsultasFechaMedico(l[0],l[1],l[2], l[3], l[4],l[5]);
+            listaConsultas.add(cpid);
+        }
+        return listaConsultas;
+    }
+
 }
