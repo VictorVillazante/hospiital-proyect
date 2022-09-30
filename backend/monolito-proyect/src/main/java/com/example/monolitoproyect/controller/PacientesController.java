@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.monolitoproyect.dto.ConsultasFechaMedico;
 import com.example.monolitoproyect.dto.ConsultasPacienteId;
+import com.example.monolitoproyect.dto.HorariosDto;
 import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
@@ -111,5 +112,16 @@ public class PacientesController {
         }
         return listaConsultas;
     }
+    @GetMapping(value="/consultas-disponibles")
+    public @ResponseBody List<HorariosDto>obtenerHorariosDisponibles(@RequestParam Map<String, String> customQuery){
+        List<Object> listaConsultas=repositoryConsultas.listarHorariosDisponiblesPorFechaMedicoEspecialidad(customQuery.get("id_atencion"),customQuery.get("fecha"));
+        ArrayList<HorariosDto> horariosDisponibles=new ArrayList();
 
+        for(int i=0;i<listaConsultas.size();i++){
+            Object[] l=(Object[]) listaConsultas.get(i);
+            HorariosDto cpid=new HorariosDto(l[0],l[1],l[2]);
+            horariosDisponibles.add(cpid);
+        }
+        return horariosDisponibles;
+    }
 }
