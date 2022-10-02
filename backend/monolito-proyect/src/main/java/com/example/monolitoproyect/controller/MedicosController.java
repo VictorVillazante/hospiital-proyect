@@ -25,12 +25,15 @@ import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.entities.EspecialidadesEntity;
 import com.example.monolitoproyect.entities.EstadosConsultaEntity;
 import com.example.monolitoproyect.entities.MedicosEntity;
+import com.example.monolitoproyect.entities.RecetasEntity;
 import com.example.monolitoproyect.repository.RepositoryAtencion;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.example.monolitoproyect.repository.RepositoryEspecialidadesJPA;
 import com.example.monolitoproyect.repository.RepositoryEstadoConsultas;
 import com.example.monolitoproyect.repository.RepositoryMedicos;
+import com.example.monolitoproyect.repository.RespositoryRecetas;
+import com.example.monolitoproyect.repository.RespositoryRecetasJPA;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
 import net.bytebuddy.dynamic.loading.PackageDefinitionStrategy.Definition.Undefined;
@@ -105,4 +108,12 @@ public class MedicosController {
     public @ResponseBody List<EstadosConsultaEntity> obtenerEstadosConsulta(){
         return repositoryEstadoConsultas.findAll();
     }
+    
+    @Autowired
+    RespositoryRecetas respositoryRecetas;
+    @GetMapping(value = "consulta/receta/{id}")
+    public @ResponseBody List<RecetasEntity> obtenerRecetasDeConsulta(@PathVariable("id")Integer id){
+        return respositoryRecetas.listaRecetasPorConsulta(id);
+    }
+    
 } 
