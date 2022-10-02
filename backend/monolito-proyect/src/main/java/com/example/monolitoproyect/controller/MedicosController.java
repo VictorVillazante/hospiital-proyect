@@ -23,11 +23,13 @@ import com.example.monolitoproyect.dto.ConsultasPacienteId;
 import com.example.monolitoproyect.entities.AtencionEntity;
 import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.entities.EspecialidadesEntity;
+import com.example.monolitoproyect.entities.EstadosConsultaEntity;
 import com.example.monolitoproyect.entities.MedicosEntity;
 import com.example.monolitoproyect.repository.RepositoryAtencion;
 import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.example.monolitoproyect.repository.RepositoryEspecialidadesJPA;
+import com.example.monolitoproyect.repository.RepositoryEstadoConsultas;
 import com.example.monolitoproyect.repository.RepositoryMedicos;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 
@@ -45,6 +47,9 @@ public class MedicosController {
 
     @Autowired
     private RepositoryAtencion respositoryAtencion;
+
+    @Autowired
+    private RepositoryConsultas repositoryConsultas;
 
     @GetMapping(path = "/especialidades")
     public @ResponseBody
@@ -79,4 +84,25 @@ public class MedicosController {
         
         return listaMedicos;
     }
-}
+    @GetMapping(value = "/consultas-dia")
+    public @ResponseBody List<ConsultasFechaMedico> controllerMethod(@RequestParam Map<String, String> customQuery) {
+
+        System.out.println("Medico" + customQuery.get("id_medico"));
+        System.out.println("Fecha" + customQuery.get("fecha"));
+
+        ArrayList<ConsultasFechaMedico> listaConsultas=new ArrayList();
+        List<Object>lista= repositoryConsultas.listarConsultasMedicoFecha(customQuery.get("id_medico"),customQuery.get("fecha"));
+        for(int i=0;i<lista.size();i++){
+            Object[] l=(Object[]) lista.get(i);
+            ConsultasFechaMedico cpid=new ConsultasFechaMedico(l[0],l[1],l[2], l[3], l[4],l[5],l[6],l[7]);
+            listaConsultas.add(cpid);
+        }
+        return listaConsultas;
+    }
+    @Autowired
+    RepositoryEstadoConsultas repositoryEstadoConsultas;
+    @GetMapping(value = "estados-consultas")
+    public @ResponseBody List<EstadosConsultaEntity> obtenerEstadosConsulta(){
+        return repositoryEstadoConsultas.findAll();
+    }
+} 

@@ -25,8 +25,13 @@ GET http://localhost:8081/medicos/especialidades
 GET http://localhost:8081/medicos/especialidades/1
 
 
-###Obtener atencion de medico y su especialidad
-GET http://localhost:8081/medicos/atencion?id_medico=8&id_especialidades=3
+###Obtener id de atencion por id de medico y su especialidad
+GET http://localhost:8081/medicos/atencion?id_medico=8&id_especialidades=2
+
+
+###Obtener estados de consultas
+GET http://localhost:8081/medicos/estados-consultas
+
 
 
 ###Actualizar datos de consulta
@@ -43,7 +48,10 @@ Content-Type: application/json
 }
 
 ### Multiples parametros
-GET http://localhost:8081/pacientes/consultas-dia?id_medico=3&fecha=2022-09-25
+GET http://localhost:8081/medicos/consultas-dia?id_medico=3&fecha=2022-09-25
+
+
+###Obtener estados de consulta
 
 
 ### Buscar horarios disponibles por atencion y fecha

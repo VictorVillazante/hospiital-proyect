@@ -97,21 +97,7 @@ public class PacientesController {
     }
 
 
-    @GetMapping(value = "/consultas-dia")
-    public @ResponseBody List<ConsultasFechaMedico> controllerMethod(@RequestParam Map<String, String> customQuery) {
-
-        System.out.println("Medico" + customQuery.get("id_medico"));
-        System.out.println("Fecha" + customQuery.get("fecha"));
-
-        ArrayList<ConsultasFechaMedico> listaConsultas=new ArrayList();
-        List<Object>lista= repositoryConsultas.listarConsultasMedicoFecha(customQuery.get("id_medico"),customQuery.get("fecha"));
-        for(int i=0;i<lista.size();i++){
-            Object[] l=(Object[]) lista.get(i);
-            ConsultasFechaMedico cpid=new ConsultasFechaMedico(l[0],l[1],l[2], l[3], l[4],l[5]);
-            listaConsultas.add(cpid);
-        }
-        return listaConsultas;
-    }
+    
     @GetMapping(value="/consultas-disponibles")
     public @ResponseBody List<HorariosDto>obtenerHorariosDisponibles(@RequestParam Map<String, String> customQuery){
         List<Object> listaConsultas=repositoryConsultas.listarHorariosDisponiblesPorFechaMedicoEspecialidad(customQuery.get("id_atencion"),customQuery.get("fecha"));
