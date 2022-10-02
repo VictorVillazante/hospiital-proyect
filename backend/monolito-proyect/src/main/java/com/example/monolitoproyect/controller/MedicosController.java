@@ -116,4 +116,11 @@ public class MedicosController {
         return respositoryRecetas.listaRecetasPorConsulta(id);
     }
     
+    @Autowired
+    RespositoryRecetasJPA respositoryRecetasJPA;
+    @PostMapping(value = "consulta/receta")
+    public @ResponseBody RecetasEntity registrarNuevaReceta(@RequestBody RecetasEntity recentaNueva){
+        respositoryRecetasJPA.save(recentaNueva);
+        return recentaNueva;
+    }
 } 

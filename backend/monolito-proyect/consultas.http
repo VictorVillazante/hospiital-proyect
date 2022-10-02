@@ -35,6 +35,18 @@ GET http://localhost:8081/medicos/estados-consultas
 ###Otener recetas de consulta
 GET http://localhost:8081/medicos/consulta/receta/117
 
+###Regsitrar nueva receta
+POST http://localhost:8081/medicos/consulta/receta
+Content-Type: application/json
+
+{
+    "descripcion": "Descripcion dolor de garganta",
+    "habilitado_recogo": 1,
+    "id_consultas": "117",
+    "id_receta": null,
+    "titulo": "Receta para dolor de garganta"
+}
+
 ###Actualizar datos de consulta
 PUT http://localhost:8081/pacientes/reservas/101
 Content-Type: application/json
