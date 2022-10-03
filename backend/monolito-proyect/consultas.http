@@ -1,4 +1,5 @@
 ###Listado de reservas por paciente
+###
 GET http://localhost:8081/pacientes/reservas/903
 
 
@@ -35,6 +36,17 @@ GET http://localhost:8081/medicos/estados-consultas
 ###Otener recetas de consulta
 GET http://localhost:8081/medicos/consulta/receta/117
 
+###Eliminar receeta de consulta
+DELETE http://localhost:8081/medicos/consulta/receta/15
+
+###Actualizar detalle de consulta
+PUT http://localhost:8081/medicos/consulta/detalle/1
+Content-Type: application/json
+
+{
+    "id_estado_consulta":1,
+    "informe_consulta":"detalles"
+}
 ###Regsitrar nueva receta
 POST http://localhost:8081/medicos/consulta/receta
 Content-Type: application/json

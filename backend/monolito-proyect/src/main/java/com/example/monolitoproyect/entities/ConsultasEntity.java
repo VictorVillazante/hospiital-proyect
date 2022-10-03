@@ -9,6 +9,8 @@ import java.util.Date;
 @Table(name = "consultas")
 @Entity
 public class ConsultasEntity {
+   
+
     @Id
     @Column
     private int id_consultas;
@@ -24,9 +26,11 @@ public class ConsultasEntity {
     private int id_consultorio;
     @Column
     private int id_atencion;
+    @Column
+    private String informe_consulta;
 
     public ConsultasEntity(int id_consultas, int id_paciente, Date fecha, int id_horario, int id_estado_consulta,
-            int id_consultorio, int id_atencion) {
+            int id_consultorio, int id_atencion, String informe_consulta) {
         this.id_consultas = id_consultas;
         this.id_paciente = id_paciente;
         this.fecha = fecha;
@@ -34,6 +38,7 @@ public class ConsultasEntity {
         this.id_estado_consulta = id_estado_consulta;
         this.id_consultorio = id_consultorio;
         this.id_atencion = id_atencion;
+        this.informe_consulta = informe_consulta;
     }
 
     public ConsultasEntity() {
@@ -95,12 +100,15 @@ public class ConsultasEntity {
         this.id_atencion = id_atencion;
     }
 
-    @Override
-    public String toString() {
-        return "ConsultasEntity [fecha=" + fecha + ", id_atencion=" + id_atencion + ", id_consultas=" + id_consultas
-                + ", id_consultorio=" + id_consultorio + ", id_estado_consulta=" + id_estado_consulta + ", id_horario="
-                + id_horario + ", id_paciente=" + id_paciente + "]";
+    public String getInforme_consulta() {
+        return informe_consulta;
     }
+
+    public void setInforme_consulta(String informe_consulta) {
+        this.informe_consulta = informe_consulta;
+    }
+
+   
 
    
 }
