@@ -69,6 +69,7 @@ public class PacientesController {
         cn.setId_estado_consulta(5);
         cn.setId_horario(ca.get().getId_horario());
         cn.setId_paciente(ca.get().getId_paciente());
+        cn.setInforme_consulta(ca.get().getInforme_consulta());
         
         return repositoryConsultasJPA.save(cn);
     }
@@ -92,7 +93,7 @@ public class PacientesController {
         cn.setId_estado_consulta(nuevo.getId_estado_consulta());
         cn.setId_horario(nuevo.getId_horario());
         cn.setId_paciente(nuevo.getId_paciente());
-        
+        cn.setInforme_consulta(nuevo.getInforme_consulta());
         return repositoryConsultasJPA.save(cn);
     }
 
