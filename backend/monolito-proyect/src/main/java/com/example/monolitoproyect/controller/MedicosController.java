@@ -54,6 +54,8 @@ public class MedicosController {
     @Autowired
     private RepositoryConsultas repositoryConsultas;
 
+    @Autowired
+    private RepositoryConsultasJPA repositoryConsultasJPA;
     @GetMapping(path = "/especialidades")
     public @ResponseBody
     List<EspecialidadesEntity> getConsultasPacienteId() {
@@ -115,6 +117,12 @@ public class MedicosController {
     public @ResponseBody List<RecetasEntity> obtenerRecetasDeConsulta(@PathVariable("id")Integer id){
         return respositoryRecetas.listaRecetasPorConsulta(id);
     }
+
+    @DeleteMapping(value = "consulta/receta/{id}")
+    public @ResponseBody String eliminarReceta(@PathVariable("id")Integer id){
+        respositoryRecetasJPA.deleteById(id);
+        return "ok";
+    }
     
     @Autowired
     RespositoryRecetasJPA respositoryRecetasJPA;
@@ -122,5 +130,16 @@ public class MedicosController {
     public @ResponseBody RecetasEntity registrarNuevaReceta(@RequestBody RecetasEntity recentaNueva){
         respositoryRecetasJPA.save(recentaNueva);
         return recentaNueva;
+    }
+
+    @PutMapping(value = "consulta/detalle/{id}")
+    public @ResponseBody ConsultasEntity actualizarDetalleConsulta(@RequestBody Map<String,Object> nuevos,@PathVariable("id")Integer id){
+        Log.info(Integer.parseInt(nuevos.get("id_estado_consulta")+""));
+        Log.info(nuevos.get("informe_consulta"));
+        ConsultasEntity ca=repositoryConsultasJPA.findById(id).get();
+        ca.setId_estado_consulta(Integer.parseInt(nuevos.get("id_estado_consulta")+""));
+        ca.setInforme_consulta(nuevos.get("informe_consulta")+"");
+        repositoryConsultasJPA.save(ca);
+        return ca;
     }
 } 

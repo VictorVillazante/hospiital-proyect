@@ -9,6 +9,8 @@ import java.util.Date;
 @Table(name = "consultas")
 @Entity
 public class ConsultasEntity {
+   
+
     @Id
     @Column
     private int id_consultas;
@@ -81,13 +83,14 @@ public class ConsultasEntity {
     public void setId_atencion(int id_atencion) {
         this.id_atencion = id_atencion;
     }
+
     public String getInforme_consulta() {
         return informe_consulta;
     }
+
     public void setInforme_consulta(String informe_consulta) {
         this.informe_consulta = informe_consulta;
     }
 
-    
    
 }
