@@ -95,3 +95,21 @@ Content-Type: application/json
     "examen_clinico":"Examen clinico registrando...",
     "diagnostico_presuntivo":"Diagnostico presuntivo registrando..."
 }
+
+###ORDENES DE LABORATORIO------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+###Registrar orden laboratorio
+POST http://localhost:8081/medicos/orden-laboratorio
+Content-Type: application/json
+
+{
+    "id_orden_laboratorio":null,
+    "id_consultas":1,
+    "descripcion":"Nueva orden laboratorio 2..."
+}
+###Obtener todas ordenes de laboratorio
+GET http://localhost:8081/medicos/orden-laboratorio
+
+###Obtener ordenes de laboratorio de acuerdo a la consulta
+GET http://localhost:8081/medicos/consulta/orden-laboratorio/1
+###Eliminar orden de laboratorio
+DELETE http://localhost:8081/medicos/orden-laboratorio/3
