@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Table(name="hojas_traspaso")
 @Entity
-public class HojaTraspaso {
+public class HojaTraspasoEntity {
     @Id
     @Column
     int id_hoja_traspaso;
@@ -17,13 +17,13 @@ public class HojaTraspaso {
     String examen_clinico;
     @Column
     String diagnostico_presuntivo;
-    public HojaTraspaso(int id_hoja_traspaso, int id_consultas, String examen_clinico, String diagnostico_presuntivo) {
+    public HojaTraspasoEntity(int id_hoja_traspaso, int id_consultas, String examen_clinico, String diagnostico_presuntivo) {
         this.id_hoja_traspaso = id_hoja_traspaso;
         this.id_consultas = id_consultas;
         this.examen_clinico = examen_clinico;
         this.diagnostico_presuntivo = diagnostico_presuntivo;
     }
-    public HojaTraspaso() {
+    public HojaTraspasoEntity() {
     }
     public int getId_hoja_traspaso() {
         return id_hoja_traspaso;

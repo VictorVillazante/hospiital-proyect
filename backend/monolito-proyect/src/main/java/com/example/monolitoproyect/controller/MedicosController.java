@@ -20,12 +20,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.monolitoproyect.dto.ConsultasFechaMedico;
 import com.example.monolitoproyect.dto.ConsultasPacienteId;
+import com.example.monolitoproyect.dto.HojasTraspasoDto;
 import com.example.monolitoproyect.dto.OrdenLaboratorioDto;
 import com.example.monolitoproyect.entities.AtencionEntity;
 import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.entities.EspecialidadesEntity;
 import com.example.monolitoproyect.entities.EstadosConsultaEntity;
-import com.example.monolitoproyect.entities.HojaTraspaso;
+import com.example.monolitoproyect.entities.HojaTraspasoEntity;
 import com.example.monolitoproyect.entities.MedicosEntity;
 import com.example.monolitoproyect.entities.OrdenLaboratorio;
 import com.example.monolitoproyect.entities.RecetasEntity;
@@ -34,6 +35,7 @@ import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.example.monolitoproyect.repository.RepositoryEspecialidadesJPA;
 import com.example.monolitoproyect.repository.RepositoryEstadoConsultas;
+import com.example.monolitoproyect.repository.RepositoryHojaTraspaso;
 import com.example.monolitoproyect.repository.RepositoryHojaTraspasoJPA;
 import com.example.monolitoproyect.repository.RepositoryMedicos;
 import com.example.monolitoproyect.repository.RepositoryOrdenLaboratorio;
@@ -150,12 +152,29 @@ public class MedicosController {
     }
     @Autowired
     RepositoryHojaTraspasoJPA repositoryHojaTraspasoJPA;
+    @Autowired
+    RepositoryHojaTraspaso repositoryHojaTraspaso;
     @PostMapping(value = "/hojas-traspaso")
-    public @ResponseBody HojaTraspaso registrarHojaTraspaso(@RequestBody HojaTraspaso htn){
+    public @ResponseBody HojaTraspasoEntity registrarHojaTraspaso(@RequestBody HojaTraspasoEntity htn){
         repositoryHojaTraspasoJPA.save(htn);
         return htn;
     }
-
+    @GetMapping(value = "consulta/hojas-traspaso/{id}")
+    public @ResponseBody List<Object> obtenerHojasTraspasoConsulta(@PathVariable("id") int id ){
+        List<Object>lht=repositoryHojaTraspaso.buscarHojasTraspasoDeConsulta(id+"");
+        List<Object>lhtf=new ArrayList<>();
+        for(int i=0;i<lht.size();i++){
+            Object[]valores=(Object[]) lht.get(i);
+            lhtf.add(new HojasTraspasoDto(valores[0],valores[1],valores[2],valores[3]));
+        }
+        return lhtf;
+    }
+    @DeleteMapping(value = "hojas-traspaso/{id}")
+    public @ResponseBody HojaTraspasoEntity eliminarHojaTraspasoPorId(@PathVariable("id") int id ){
+        HojaTraspasoEntity hte=repositoryHojaTraspasoJPA.findById(id).get();
+        repositoryHojaTraspasoJPA.delete(hte);
+        return hte;
+    }
     @Autowired
     RepositoryOrdenLaboratorioJPA repositoryOrdenLaboratorioJPA;
     @Autowired

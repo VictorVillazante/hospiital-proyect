@@ -95,6 +95,11 @@ Content-Type: application/json
     "examen_clinico":"Examen clinico registrando...",
     "diagnostico_presuntivo":"Diagnostico presuntivo registrando..."
 }
+###Obtener hojas de traspaso de consulta
+GET http://localhost:8081/medicos/consulta/hojas-traspaso/1
+
+###Eliminar hoja de traspaso 
+DELETE  http://localhost:8081/medicos/hojas-traspaso/5
 
 ###ORDENES DE LABORATORIO------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ###Registrar orden laboratorio
@@ -113,3 +118,20 @@ GET http://localhost:8081/medicos/orden-laboratorio
 GET http://localhost:8081/medicos/consulta/orden-laboratorio/1
 ###Eliminar orden de laboratorio
 DELETE http://localhost:8081/medicos/orden-laboratorio/3
+
+
+###ADM
+###ADM
+###ADM
+###ADM
+###ADM
+###ADM
+###ADM
+
+GET http://localhost:8081/adm/pacientes
+
+###Obtener id de atencion por id de medico y su especialidad
+GET http://localhost:8081/adm/consultas-dia?fecha=2022-10-11
+
+###Eliminar consulta adm
+DELETE http://localhost:8081/adm/consulta/1
