@@ -83,3 +83,15 @@ GET http://localhost:8081/medicos/consultas-dia?id_medico=3&fecha=2022-09-25
 
 ### Buscar horarios disponibles por atencion y fecha
 GET http://localhost:8081/pacientes/consultas-disponibles?id_atencion=5&fecha=2022-09-28
+
+###HOJAS TRASPASO------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+###Registrar hojas traspaso
+POST http://localhost:8081/medicos/hojas-traspaso
+Content-Type: application/json
+
+{
+    "id_hoja_traspaso":null,
+    "id_consultas":1,
+    "examen_clinico":"Examen clinico registrando...",
+    "diagnostico_presuntivo":"Diagnostico presuntivo registrando..."
+}

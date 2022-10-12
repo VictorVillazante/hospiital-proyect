@@ -24,6 +24,7 @@ import com.example.monolitoproyect.entities.AtencionEntity;
 import com.example.monolitoproyect.entities.ConsultasEntity;
 import com.example.monolitoproyect.entities.EspecialidadesEntity;
 import com.example.monolitoproyect.entities.EstadosConsultaEntity;
+import com.example.monolitoproyect.entities.HojaTraspaso;
 import com.example.monolitoproyect.entities.MedicosEntity;
 import com.example.monolitoproyect.entities.RecetasEntity;
 import com.example.monolitoproyect.repository.RepositoryAtencion;
@@ -31,6 +32,7 @@ import com.example.monolitoproyect.repository.RepositoryConsultas;
 import com.example.monolitoproyect.repository.RepositoryConsultasJPA;
 import com.example.monolitoproyect.repository.RepositoryEspecialidadesJPA;
 import com.example.monolitoproyect.repository.RepositoryEstadoConsultas;
+import com.example.monolitoproyect.repository.RepositoryHojaTraspasoJPA;
 import com.example.monolitoproyect.repository.RepositoryMedicos;
 import com.example.monolitoproyect.repository.RespositoryRecetas;
 import com.example.monolitoproyect.repository.RespositoryRecetasJPA;
@@ -141,5 +143,12 @@ public class MedicosController {
         ca.setInforme_consulta(nuevos.get("informe_consulta")+"");
         repositoryConsultasJPA.save(ca);
         return ca;
+    }
+    @Autowired
+    RepositoryHojaTraspasoJPA repositoryHojaTraspasoJPA;
+    @PostMapping(value = "/hojas-traspaso")
+    public @ResponseBody HojaTraspaso registrarHojaTraspaso(@RequestBody HojaTraspaso htn){
+        repositoryHojaTraspasoJPA.save(htn);
+        return htn;
     }
 } 
