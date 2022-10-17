@@ -17,11 +17,15 @@ public class HojaTraspasoEntity {
     String examen_clinico;
     @Column
     String diagnostico_presuntivo;
-    public HojaTraspasoEntity(int id_hoja_traspaso, int id_consultas, String examen_clinico, String diagnostico_presuntivo) {
+    @Column
+    int traspaso_aceptado_adm;
+    public HojaTraspasoEntity(int id_hoja_traspaso, int id_consultas, String examen_clinico,
+            String diagnostico_presuntivo, int traspaso_aceptado_adm) {
         this.id_hoja_traspaso = id_hoja_traspaso;
         this.id_consultas = id_consultas;
         this.examen_clinico = examen_clinico;
         this.diagnostico_presuntivo = diagnostico_presuntivo;
+        this.traspaso_aceptado_adm = traspaso_aceptado_adm;
     }
     public HojaTraspasoEntity() {
     }
@@ -49,10 +53,12 @@ public class HojaTraspasoEntity {
     public void setDiagnostico_presuntivo(String diagnostico_presuntivo) {
         this.diagnostico_presuntivo = diagnostico_presuntivo;
     }
-    @Override
-    public String toString() {
-        return "HojaTraspaso [id_hoja_traspaso=" + id_hoja_traspaso + ", id_consultas=" + id_consultas
-                + ", examen_clinico=" + examen_clinico + ", diagnostico_presuntivo=" + diagnostico_presuntivo + "]";
+    public int getTraspaso_aceptado_adm() {
+        return traspaso_aceptado_adm;
     }
+    public void setTraspaso_aceptado_adm(int traspaso_aceptado_adm) {
+        this.traspaso_aceptado_adm = traspaso_aceptado_adm;
+    }
+    
    
 }

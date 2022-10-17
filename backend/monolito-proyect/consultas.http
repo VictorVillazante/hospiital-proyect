@@ -131,7 +131,16 @@ DELETE http://localhost:8081/medicos/orden-laboratorio/3
 GET http://localhost:8081/adm/pacientes
 
 ###Obtener id de atencion por id de medico y su especialidad
-GET http://localhost:8081/adm/consultas-dia?fecha=2022-10-11
+GET http://localhost:8081/adm/consultas-dia?fecha=2022-10-17
+
+###Obtener solicitudes de traspaso de la fecha
+GET http://localhost:8081/adm/hojas-traspaso/2022-10-17
+
+###Habilitar solicitudes de traspaso
+PUT http://localhost:8081/adm/hojas-traspaso/habilitar
+###Deshabilitar solicitudes de traspaso
+PUT http://localhost:8081/adm/hojas-traspaso/deshabilitar
+
 
 ###Eliminar consulta adm
 DELETE http://localhost:8081/adm/consulta/1
