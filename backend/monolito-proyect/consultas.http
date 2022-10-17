@@ -137,10 +137,12 @@ GET http://localhost:8081/adm/consultas-dia?fecha=2022-10-17
 GET http://localhost:8081/adm/hojas-traspaso/2022-10-17
 
 ###Habilitar solicitudes de traspaso
-PUT http://localhost:8081/adm/hojas-traspaso/habilitar
+PUT http://localhost:8081/adm/hojas-traspaso/habilitar/1
 ###Deshabilitar solicitudes de traspaso
-PUT http://localhost:8081/adm/hojas-traspaso/deshabilitar
+PUT http://localhost:8081/adm/hojas-traspaso/deshabilitar/1
 
 
 ###Eliminar consulta adm
 DELETE http://localhost:8081/adm/consulta/1
+###Obtener todos datos consulta
+GET http://localhost:8081/adm/datos_consulta_adm/1

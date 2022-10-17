@@ -85,6 +85,10 @@ public class AdmController {
         }
         return listaConsultas;
     }
+    @GetMapping(value = "/datos_consulta_adm/{id}")
+    public @ResponseBody List<Object> controllerMethod(@PathVariable("id") Integer id) {
+        return repositoryConsultas.obtenerTodosDatosConsulta(id);
+    }
     @Autowired
     RepositoryConsultasJPA repositoryConsultasJPA;
     @DeleteMapping(value = "consulta/{id}")
